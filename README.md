@@ -18,56 +18,56 @@ As a game developer, my key tools and languages include:
 
 <h4> Game Development Tools </h4>
 <span>
-  <img src="https://img.shields.io/badge/Godot-478CBF?style=for-the-badge&logo=godot-engine&logoColor=white">
-  <img src="https://img.shields.io/badge/Unreal%20Engine-313131?style=for-the-badge&logo=unreal-engine&logoColor=white">
-  <img src="https://img.shields.io/badge/Unity-%23100000?style=for-the-badge&logo=unity&logoColor=white">
-  <img src="https://img.shields.io/badge/Rider-0A0A0A?style=for-the-badge&logo=rider&logoColor=white">
-  <img src="https://img.shields.io/badge/Visual%20Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white">
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
-  <img src="https://img.shields.io/badge/Bitbucket-0052CC?style=for-the-badge&logo=bitbucket&logoColor=white">
-  <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white">
-  <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Godot-478CBF?style=for-the-badge&logo=godot-engine&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Unreal%20Engine-313131?style=for-the-badge&logo=unreal-engine&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Unity-%23100000?style=for-the-badge&logo=unity&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Rider-0A0A0A?style=for-the-badge&logo=rider&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Visual%20Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Bitbucket-0052CC?style=for-the-badge&logo=bitbucket&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white">
 </span>
 
 <h4> Platforms </h4>
 <span>
-  <img src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white">
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
-  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
-  <img src="https://img.shields.io/badge/WebGL-000000?style=for-the-badge&logo=webgl&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/WebGL-000000?style=for-the-badge&logo=webgl&logoColor=white">
 </span>
 
 <h4> Art & Design Tools </h4>
 <span>
-  <img src="https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white">
-  <img src="https://img.shields.io/badge/Zbrush-293681?style=for-the-badge&logo=zbrush&logoColor=white">
-  <img src="https://img.shields.io/badge/Autodesk%20Maya-000000?style=for-the-badge&logo=autodesk&logoColor=white">
-  <img src="https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=for-the-badge&logo=adobe%20photoshop&logoColor=white">
-  <img src="https://img.shields.io/badge/GIMP-5C564A?style=for-the-badge&logo=gimp&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Zbrush-293681?style=for-the-badge&logo=zbrush&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Autodesk%20Maya-000000?style=for-the-badge&logo=autodesk&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=for-the-badge&logo=adobe%20photoshop&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/GIMP-5C564A?style=for-the-badge&logo=gimp&logoColor=white">
 </span>
 
 <h4> Languages </h4>
 <span> 
-  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
-  <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
-  <img src= "https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
 </span>
 
 ---
 
 ## Check Out My Social Media & Projects
 
-<a href="https://www.tiktok.com/@lobinux" >
-  <img src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=TikTok&logoColor=white" alt="Tiktok">
+<a href="https://www.tiktok.com/@lobinux">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=TikTok&logoColor=white" alt="TikTok">
 </a>
-<a href="https://www.linkedin.com/in/lobinux/" >
-  <img src="https://img.shields.io/badge/Linkedin-9347FF?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin">
+<a href="https://www.linkedin.com/in/lobinux/">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/Linkedin-9347FF?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin">
 </a>
 <a href="https://www.youtube.com/@lobinuxsoft">
-  <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="Youtube">
+  <img style="margin-right: 1px;" src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">
 </a>
 
 ---
