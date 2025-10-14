@@ -3,7 +3,7 @@
 
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjY5Z3EzaGhkd2pobWJic3F1ZmlzMHlneW41amF1a2hxaWV1bmU2NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/OgUorGH0Z75b3unoPA/giphy.gif" width="64px">&nbsp;***About Me***
 
-I'm a computer engineering student, currently halfway through my degree, and a passionate **Video Game Developer**. I specialize in **end-to-end video game development**, with a particular focus on **Gameplay**. I love to create, innovate, and bring new interactive experiences to life across various platforms, including **PC (Desktop & Handheld like SteamDeck), Mobile (Android), VR, XR, and WebGL**.
+I'm a passionate **Video Game Developer**. I specialize in **end-to-end video game development**, with a particular focus on **Gameplay**. I love to create, innovate, and bring new interactive experiences to life across various platforms, including **PC (Desktop & Handheld like SteamDeck), Mobile (Android), VR, XR, and WebGL**.
 
 - 👯 I'm actively looking for **collaborators for my game projects** and am open to participating in **open-source projects**.
 - ✔ Ask me anything, I'm happy to help.
