@@ -82,8 +82,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'chaja',
-    name: 'Chaja',
+    slug: 'yryvu',
+    name: 'Yryvu',
     year: '2024',
     featured: true,
     engine: 'Rust + Tauri + SolidJS',
