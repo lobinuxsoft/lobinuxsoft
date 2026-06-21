@@ -1,0 +1,96 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import { SOCIAL } from '@/config';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { label: 'Email', value: SOCIAL.email, href: `mailto:${SOCIAL.email}`, external: false },
+  { label: 'GitHub', value: `@${SOCIAL.githubHandle}`, href: SOCIAL.github, external: true },
+  { label: 'LinkedIn', value: `/in/${SOCIAL.linkedinHandle}`, href: SOCIAL.linkedin, external: true },
+];
+---
+
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container container-narrow contact__inner" data-reveal>
+    <p class="eyebrow">{t('section.contact')}</p>
+    <h2 class="section-title contact__title" id="contact-title">{t('section.contact.lead')}</h2>
+    <p class="contact__location mono">{SOCIAL.location}</p>
+
+    <ul role="list" class="contact__links">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              class="contact__link"
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener' : undefined}
+            >
+              <span class="contact__label mono">{l.label}</span>
+              <span class="contact__value">{l.value}</span>
+              <span class="contact__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact__inner {
+    text-align: center;
+  }
+  .contact__title {
+    margin-bottom: var(--space-sm);
+  }
+  .contact__location {
+    color: var(--text-subtle);
+    font-size: var(--step--1);
+    margin-bottom: var(--space-xl);
+  }
+  .contact__links {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: left;
+  }
+  .contact__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .contact__link:hover {
+    border-color: var(--accent);
+    background: var(--surface-hover);
+  }
+  .contact__label {
+    font-size: var(--step--1);
+    color: var(--accent);
+    min-width: 5rem;
+  }
+  .contact__value {
+    color: var(--text);
+  }
+  .contact__arrow {
+    margin-left: auto;
+    color: var(--text-subtle);
+    transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .contact__link:hover .contact__arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
+</style>

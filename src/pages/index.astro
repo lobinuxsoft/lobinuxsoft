@@ -1,0 +1,24 @@
+---
+// Root entry. Sends visitors to the default locale instantly.
+// A static meta-refresh + JS redirect (delay 0) is used so it works without
+// a server runtime, while the canonical points at the default locale.
+import { SITE } from '@/config';
+const target = `/${SITE.defaultLang}/`;
+---
+
+<!doctype html>
+<html lang={SITE.defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={new URL(target, SITE.url).href} />
+    <meta name="robots" content="noindex" />
+    <title>Matias Galarza Fernandez</title>
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <a href={target}>Continue to site →</a>
+  </body>
+</html>

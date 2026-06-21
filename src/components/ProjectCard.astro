@@ -1,0 +1,146 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, pick, localizePath } from '@/i18n/utils';
+import type { Project } from '@/data/projects';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+const href = localizePath(lang, `/projects/${project.slug}`);
+const initials = project.name.slice(0, 2).toUpperCase();
+---
+
+<article class="card" data-reveal>
+  <a class="card__media" href={href} aria-label={`${t('label.viewProject')}: ${project.name}`}>
+    {/* Graphic treatment placeholder until real cover art is supplied. */}
+    <div class="card__art" data-slug={project.slug} aria-hidden="true">
+      <span class="card__initials mono">{initials}</span>
+    </div>
+    {project.liveInProduction && <span class="card__badge mono">{t('label.liveInProduction')}</span>}
+  </a>
+
+  <div class="card__body">
+    <div class="card__meta mono">
+      <span class="card__engine">{project.engine}</span>
+      <span class="card__year">{project.year}</span>
+    </div>
+    <h3 class="card__title">
+      <a href={href}>{project.name}</a>
+    </h3>
+    <p class="card__tagline">{pick(project.tagline, lang)}</p>
+
+    <ul role="list" class="card__tech">
+      {project.tech.slice(0, 4).map((tech) => <li class="chip">{tech}</li>)}
+      {project.tech.length > 4 && <li class="chip">+{project.tech.length - 4}</li>}
+    </ul>
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+  }
+  .card__art {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 30% 20%, var(--amber-glow), transparent 55%),
+      linear-gradient(135deg, var(--ink-800), var(--ink-900));
+    overflow: hidden;
+  }
+  .card__art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.4;
+    transition: transform var(--dur-slow) var(--ease);
+  }
+  .card:hover .card__art::after {
+    transform: scale(1.08);
+  }
+  .card__initials {
+    position: relative;
+    font-size: var(--step-5);
+    font-weight: 500;
+    color: var(--accent);
+    opacity: 0.85;
+    letter-spacing: 0.05em;
+  }
+  .card__badge {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--bg) 60%, transparent);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    backdrop-filter: blur(6px);
+  }
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+  }
+  .card__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .card__engine {
+    color: var(--accent);
+  }
+  .card__title {
+    font-size: var(--step-2);
+  }
+  .card__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .card__body {
+    position: relative;
+  }
+  .card__tagline {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin: var(--space-xs) 0 0;
+    position: relative;
+    z-index: 1;
+  }
+</style>

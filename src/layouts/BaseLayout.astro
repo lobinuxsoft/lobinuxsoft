@@ -1,0 +1,116 @@
+---
+import '@/styles/global.css';
+import { SITE, SOCIAL } from '@/config';
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, locales, getAlternatePath } from '@/i18n/utils';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Optional page-specific OG image (absolute path under /public). */
+  ogImage?: string;
+  /** Emit Person structured data (home page only). */
+  person?: boolean;
+}
+
+const { lang, title, description, ogImage = SITE.ogImage, person = false } = Astro.props;
+const t = useTranslations(lang);
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+
+// hreflang alternates for every supported locale + x-default.
+const alternates = locales.map((l) => ({
+  hreflang: l,
+  href: new URL(getAlternatePath(Astro.url, l), SITE.url).href,
+}));
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author,
+  jobTitle: 'Senior Game Developer · Lead Programmer',
+  email: `mailto:${SOCIAL.email}`,
+  url: SITE.url,
+  sameAs: [SOCIAL.github, SOCIAL.linkedin],
+  knowsAbout: ['Game Development', 'Multiplayer Netcode', 'VR/XR', 'Rust', 'C++', 'C#', 'Unity', 'Unreal Engine', 'Godot'],
+  address: { '@type': 'PostalAddress', addressCountry: 'AR' },
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(getAlternatePath(Astro.url, SITE.defaultLang), SITE.url).href} />
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
+    <meta property="og:site_name" content={SITE.author} />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {/* Theme: apply persisted preference before paint to avoid flash. */}
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.dataset.theme = stored;
+        }
+      })();
+    </script>
+
+    {person && <script type="application/ld+json" set:html={JSON.stringify(personLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
+    <Header lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    {/* Subtle reveal-on-scroll: adds .is-visible when elements enter view. */}
+    <script>
+      const items = document.querySelectorAll('[data-reveal]');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) {
+        items.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.12 }
+        );
+        items.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

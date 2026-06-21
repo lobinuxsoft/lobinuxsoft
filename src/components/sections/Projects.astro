@@ -1,0 +1,67 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { featuredProjects } from '@/data/projects';
+import ProjectCard from '@/components/ProjectCard.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const allHref = localizePath(lang, '/projects');
+---
+
+<section class="section projects" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="projects__head" data-reveal>
+      <div>
+        <p class="eyebrow">{t('section.projects')}</p>
+        <h2 class="section-title" id="projects-title">{t('section.projects.subtitle')}</h2>
+      </div>
+      <a class="projects__all mono" href={allHref}>{t('label.viewAll')} →</a>
+    </div>
+
+    <div class="projects__grid">
+      {featuredProjects.map((project) => <ProjectCard project={project} lang={lang} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+  .projects__head .section-title {
+    margin-bottom: var(--space-xl);
+  }
+  .projects__all {
+    font-size: var(--step--1);
+    color: var(--accent);
+    padding-bottom: var(--space-xl);
+    white-space: nowrap;
+    transition: opacity var(--dur) var(--ease);
+  }
+  .projects__all:hover {
+    opacity: 0.75;
+  }
+  .projects__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  @media (min-width: 40rem) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 68rem) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, pick, localizePath } from '@/i18n/utils';
+import { projects, type Project } from '@/data/projects';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  const langs: Lang[] = ['en', 'es'];
+  return langs.flatMap((lang) =>
+    projects.map((project) => ({
+      params: { lang, slug: project.slug },
+      props: { project },
+    }))
+  );
+}
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const title = `${project.name} — ${pick(project.tagline, lang)}`;
+const backHref = localizePath(lang, '/projects');
+const initials = project.name.slice(0, 2).toUpperCase();
+---
+
+<BaseLayout lang={lang} title={`${project.name} — Matias Galarza`} description={pick(project.tagline, lang)}>
+  <article class="section project">
+    <div class="container container-narrow">
+      <a class="project__back mono" href={backHref}>← {t('label.viewAll')}</a>
+
+      <div class="project__hero" data-reveal>
+        <div class="project__art" data-slug={project.slug} aria-hidden="true">
+          <span class="project__initials mono">{initials}</span>
+        </div>
+      </div>
+
+      <header class="project__header" data-reveal>
+        <div class="project__meta mono">
+          <span class="project__engine">{project.engine}</span>
+          <span>{project.year}</span>
+          {project.liveInProduction && <span class="project__live">{t('label.liveInProduction')}</span>}
+        </div>
+        <h1 class="project__title">{project.name}</h1>
+        <p class="lead">{pick(project.tagline, lang)}</p>
+      </header>
+
+      <div class="project__grid">
+        <div class="project__desc" data-reveal>
+          <p>{pick(project.description, lang)}</p>
+
+          {
+            project.links.length > 0 && (
+              <div class="project__links">
+                {project.links.map((l) => (
+                  <a class="btn btn--ghost" href={l.href} target="_blank" rel="noopener">
+                    {l.kind === 'code' ? '</>' : '↗'} {pick(l.label, lang)}
+                  </a>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <aside class="project__side" data-reveal style="--reveal-delay: 100ms">
+          <div class="project__block">
+            <h2 class="project__block-title mono">{t('label.role')}</h2>
+            <p>{pick(project.role, lang)}</p>
+          </div>
+          <div class="project__block">
+            <h2 class="project__block-title mono">{t('label.tech')}</h2>
+            <ul role="list" class="project__tech">
+              {project.tech.map((tech) => <li class="chip">{tech}</li>)}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .project__back {
+    display: inline-block;
+    margin-bottom: var(--space-xl);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    transition: color var(--dur) var(--ease);
+  }
+  .project__back:hover {
+    color: var(--accent);
+  }
+  .project__hero {
+    aspect-ratio: 16 / 7;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .project__art {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 30% 25%, var(--amber-glow), transparent 55%),
+      linear-gradient(135deg, var(--ink-800), var(--ink-900));
+  }
+  .project__initials {
+    font-size: var(--step-6);
+    color: var(--accent);
+    opacity: 0.85;
+  }
+  .project__header {
+    margin-top: var(--space-xl);
+  }
+  .project__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+    margin-bottom: var(--space-sm);
+  }
+  .project__engine {
+    color: var(--accent);
+  }
+  .project__live {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-pill);
+    padding: 0 0.6rem;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    align-self: center;
+  }
+  .project__title {
+    font-size: var(--step-4);
+  }
+  .project__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  @media (min-width: 52rem) {
+    .project__grid {
+      grid-template-columns: 1.6fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+  .project__desc p {
+    color: var(--text-muted);
+    font-size: var(--step-1);
+    line-height: var(--leading-normal);
+  }
+  .project__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+  }
+  .project__block + .project__block {
+    margin-top: var(--space-lg);
+  }
+  .project__block-title {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+  }
+  .project__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, pick } from '@/i18n/utils';
+import { skillGroups } from '@/data/skills';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section skills" id="skills" aria-labelledby="skills-title">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{t('section.skills')}</p>
+    <h2 class="section-title" id="skills-title" data-reveal>
+      {lang === 'es' ? 'El stack' : 'The stack'}
+    </h2>
+
+    <div class="skills__grid">
+      {
+        skillGroups.map((group, i) => (
+          <article class="skill-group" data-reveal style={`--reveal-delay: ${(i % 3) * 80}ms`}>
+            <header class="skill-group__head">
+              <span class="skill-group__tag mono">{group.tag}</span>
+              <h3 class="skill-group__title">{pick(group.category, lang)}</h3>
+            </header>
+            <ul role="list" class="skill-group__list">
+              {group.skills.map((s) => <li class="chip">{s}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  @media (min-width: 40rem) {
+    .skills__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64rem) {
+    .skills__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .skill-group {
+    padding: var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .skill-group:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+  .skill-group__head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+  .skill-group__tag {
+    font-size: var(--step--1);
+    color: var(--accent);
+    opacity: 0.85;
+  }
+  .skill-group__tag::before {
+    content: '#';
+    opacity: 0.6;
+  }
+  .skill-group__title {
+    font-size: var(--step-1);
+  }
+  .skill-group__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0;
+  }
+</style>

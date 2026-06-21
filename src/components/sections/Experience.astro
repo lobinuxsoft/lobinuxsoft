@@ -1,0 +1,107 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, pick } from '@/i18n/utils';
+import { experience } from '@/data/profile';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section experience" id="experience" aria-labelledby="experience-title">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{t('section.experience')}</p>
+    <h2 class="section-title" id="experience-title" data-reveal>
+      {lang === 'es' ? 'Trayectoria' : 'Track record'}
+    </h2>
+
+    <ol role="list" class="timeline">
+      {
+        experience.map((job, i) => (
+          <li class="entry" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <div class="entry__period mono">
+              {job.start} – {job.end === 'present' ? t('label.present') : pick(job.end, lang)}
+            </div>
+            <div class="entry__main">
+              <h3 class="entry__role">{pick(job.role, lang)}</h3>
+              <p class="entry__company">
+                <span class="entry__company-name">{job.company}</span>
+                <span class="entry__sep" aria-hidden="true">·</span>
+                <span class="entry__location">{pick(job.location, lang)}</span>
+              </p>
+              <ul role="list" class="entry__highlights">
+                {job.highlights.map((h) => <li>{pick(h, lang)}</li>)}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .entry {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border);
+  }
+  .entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  @media (min-width: 48rem) {
+    .entry {
+      grid-template-columns: 12rem 1fr;
+      gap: var(--space-xl);
+    }
+  }
+  .entry__period {
+    font-size: var(--step--1);
+    color: var(--accent);
+    padding-top: 0.35rem;
+  }
+  .entry__role {
+    font-size: var(--step-2);
+  }
+  .entry__company {
+    margin-top: var(--space-2xs);
+    color: var(--text-muted);
+    font-size: var(--step-0);
+  }
+  .entry__company-name {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .entry__sep {
+    margin-inline: var(--space-xs);
+    color: var(--text-subtle);
+  }
+  .entry__highlights {
+    margin: var(--space-md) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    color: var(--text-muted);
+  }
+  .entry__highlights li {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+  .entry__highlights li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+</style>

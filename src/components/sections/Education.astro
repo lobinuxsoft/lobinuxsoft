@@ -1,0 +1,138 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations, pick } from '@/i18n/utils';
+import { education, certifications, spokenLanguages } from '@/data/profile';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section education" id="education" aria-labelledby="education-title">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{t('section.education')}</p>
+    <h2 class="section-title" id="education-title" data-reveal>
+      {lang === 'es' ? 'Formación y créditos' : 'Education & credentials'}
+    </h2>
+
+    <div class="edu__grid">
+      <div class="edu__col" data-reveal>
+        <h3 class="edu__heading mono">{t('label.education')}</h3>
+        <ul role="list" class="edu__list">
+          {
+            education.map((e) => (
+              <li class="edu__item">
+                <p class="edu__title">{pick(e.title, lang)}</p>
+                <p class="edu__meta">
+                  <span>{e.institution}</span>
+                  <span class="edu__period mono">{e.period}</span>
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="edu__col" data-reveal style="--reveal-delay: 100ms">
+        <h3 class="edu__heading mono">{t('label.certifications')}</h3>
+        <ul role="list" class="edu__certs">
+          {certifications.map((c) => <li>{c}</li>)}
+        </ul>
+
+        <h3 class="edu__heading mono edu__heading--spaced">{t('label.languages')}</h3>
+        <ul role="list" class="edu__langs">
+          {
+            spokenLanguages.map((l) => (
+              <li>
+                <span class="edu__lang-name">{pick(l.name, lang)}</span>
+                <span class="edu__lang-level">{pick(l.level, lang)}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  @media (min-width: 52rem) {
+    .edu__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+  .edu__heading {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+  }
+  .edu__heading--spaced {
+    margin-top: var(--space-xl);
+  }
+  .edu__list,
+  .edu__certs,
+  .edu__langs {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .edu__item {
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+  }
+  .edu__item:last-child {
+    border-bottom: none;
+  }
+  .edu__title {
+    font-weight: 600;
+  }
+  .edu__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    margin-top: var(--space-2xs);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .edu__period {
+    color: var(--text-subtle);
+  }
+  .edu__certs li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: var(--text-muted);
+  }
+  .edu__certs li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8em;
+  }
+  .edu__langs li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border);
+  }
+  .edu__lang-name {
+    font-weight: 600;
+  }
+  .edu__lang-level {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+</style>

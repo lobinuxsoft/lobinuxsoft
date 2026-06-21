@@ -1,0 +1,51 @@
+---
+import { type Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import { projects } from '@/data/projects';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const title = `${t('section.projects')} — Matias Galarza`;
+const description =
+  lang === 'es'
+    ? 'Proyectos open-source, herramientas y juegos: CapyDeploy, OhMyDialogSystem, Chaja, yaguarete_os y más.'
+    : 'Open-source projects, tools and games: CapyDeploy, OhMyDialogSystem, Chaja, yaguarete_os and more.';
+---
+
+<BaseLayout lang={lang} title={title} description={description}>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow" data-reveal>{t('section.projects')}</p>
+      <h1 class="section-title" data-reveal>{t('section.projects.subtitle')}</h1>
+
+      <div class="all-projects">
+        {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .all-projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  @media (min-width: 40rem) {
+    .all-projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 68rem) {
+    .all-projects {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

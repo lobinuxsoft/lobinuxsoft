@@ -1,0 +1,50 @@
+---
+import { languages, type Lang } from '@/i18n/ui';
+import { useTranslations, locales, getAlternatePath } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="lang" role="group" aria-label={t('a11y.switchLang')}>
+  {
+    locales.map((l) => (
+      <a
+        class="lang__opt"
+        href={getAlternatePath(Astro.url, l)}
+        hreflang={l}
+        aria-current={l === lang ? 'true' : 'false'}
+      >
+        {l.toUpperCase()}
+        <span class="visually-hidden"> — {languages[l]}</span>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+  .lang__opt {
+    padding: 0.3rem 0.6rem;
+    color: var(--text-subtle);
+    transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .lang__opt:hover {
+    color: var(--text);
+  }
+  .lang__opt[aria-current='true'] {
+    color: var(--accent-contrast);
+    background: var(--accent);
+  }
+</style>
