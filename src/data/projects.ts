@@ -97,6 +97,7 @@ export const projects: Project[] = [
     },
     role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
     tech: ['Rust', 'Tauri', 'SolidJS', 'Git'],
+    cover: 'yryvu.png',
     // No GitHub Pages site yet — falls back to the public repo.
     links: [
       { label: { en: 'View code', es: 'Ver código' }, href: 'https://github.com/lobinuxsoft/yryvu', kind: 'code' },
