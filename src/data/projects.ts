@@ -108,17 +108,17 @@ export const projects: Project[] = [
     name: 'yaguarete_os',
     year: '2023',
     featured: true,
-    engine: 'Arch Linux',
+    engine: 'Fedora Atomic',
     tagline: {
-      en: 'An Arch-based Linux distribution tuned for development.',
-      es: 'Una distribución Linux basada en Arch optimizada para desarrollo.',
+      en: 'An immutable KDE distribution built on Bazzite, for development and gaming.',
+      es: 'Una distribución KDE inmutable basada en Bazzite, para desarrollo y gaming.',
     },
     description: {
-      en: 'A custom Arch-based Linux distribution maintained end-to-end and tuned for development workflows — from package selection to defaults that make the machine productive out of the box.',
-      es: 'Una distribución Linux basada en Arch, mantenida de punta a punta y optimizada para flujos de trabajo de desarrollo — desde la selección de paquetes hasta los valores por defecto que dejan la máquina productiva desde el arranque.',
+      en: 'A custom image-based Linux distribution built on Bazzite (Fedora Atomic / Universal Blue), maintained end-to-end and tuned for development and gaming — atomic OCI image builds, a KDE desktop, and defaults that make the machine productive out of the box.',
+      es: 'Una distribución Linux personalizada basada en imágenes, construida sobre Bazzite (Fedora Atomic / Universal Blue), mantenida de punta a punta y optimizada para desarrollo y gaming — builds atómicos de imágenes OCI, escritorio KDE y valores por defecto que dejan la máquina productiva desde el arranque.',
     },
     role: { en: 'Maintainer', es: 'Maintainer' },
-    tech: ['Arch Linux', 'Linux', 'Shell', 'Packaging'],
+    tech: ['Fedora Atomic', 'Bazzite', 'bootc', 'OCI', 'KDE', 'Linux'],
     cover: 'yaguarete-os.webp',
     links: [
       { label: { en: 'Visit site', es: 'Ver sitio' }, href: 'https://lobinuxsoft.github.io/yaguarete_os/', kind: 'external' },
