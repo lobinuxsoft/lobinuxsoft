@@ -1,5 +1,4 @@
 import type { Lang, LocalizedString } from '@/i18n/utils';
-import { SOCIAL } from '@/config';
 
 /**
  * Portfolio projects — sourced from the CV's open-source work and shipped
@@ -7,11 +6,11 @@ import { SOCIAL } from '@/config';
  * collections because every text field needs an `{ en, es }` pair, which is
  * far cleaner as structured data).
  *
- * LINKS: per-repo URLs are PLACEHOLDERS pointing at the GitHub profile until
- * the exact repository URLs are confirmed. Search for `repo:` to update them.
+ * LINKS: point at each project's GitHub Pages site when it has one, otherwise
+ * at the public repo. Projects without a site/repo carry no link.
  * MEDIA: `cover` is optional; when omitted the card renders a graphic
- * treatment. Drop real screenshots/renders in `src/assets/projects/` and set
- * the path here to swap them in.
+ * treatment. Cover files live in `src/assets/projects/` (resolved by
+ * `data/projectCovers.ts`); set the filename here to swap them in.
  */
 export interface Project {
   slug: string;
@@ -56,9 +55,9 @@ export const projects: Project[] = [
     },
     role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
     tech: ['Rust', 'Tauri 2', 'WebSocket', 'TCP', 'Python', 'Decky Loader', 'Steam Deck'],
+    cover: 'capydeploy.gif',
     links: [
-      // repo: confirm exact URL
-      { label: { en: 'View code', es: 'Ver código' }, href: SOCIAL.github, kind: 'code' },
+      { label: { en: 'Visit site', es: 'Ver sitio' }, href: 'https://lobinuxsoft.github.io/capydeploy/', kind: 'external' },
     ],
   },
   {
@@ -77,9 +76,9 @@ export const projects: Project[] = [
     },
     role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
     tech: ['Godot 4', 'C++', 'GDExtension', 'llama.cpp', 'Local LLM'],
+    cover: 'ohmydialogsystem.png',
     links: [
-      // repo: confirm exact URL
-      { label: { en: 'View code', es: 'Ver código' }, href: SOCIAL.github, kind: 'code' },
+      { label: { en: 'Visit site', es: 'Ver sitio' }, href: 'https://lobinuxsoft.github.io/OhMyDialogSystem/', kind: 'external' },
     ],
   },
   {
@@ -98,9 +97,9 @@ export const projects: Project[] = [
     },
     role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
     tech: ['Rust', 'Tauri', 'SolidJS', 'Git'],
+    // No GitHub Pages site yet — falls back to the public repo.
     links: [
-      // repo: confirm exact URL
-      { label: { en: 'View code', es: 'Ver código' }, href: SOCIAL.github, kind: 'code' },
+      { label: { en: 'View code', es: 'Ver código' }, href: 'https://github.com/lobinuxsoft/yryvu', kind: 'code' },
     ],
   },
   {
@@ -119,28 +118,10 @@ export const projects: Project[] = [
     },
     role: { en: 'Maintainer', es: 'Maintainer' },
     tech: ['Arch Linux', 'Linux', 'Shell', 'Packaging'],
+    cover: 'yaguarete-os.webp',
     links: [
-      // repo: confirm exact URL
-      { label: { en: 'View code', es: 'Ver código' }, href: SOCIAL.github, kind: 'code' },
+      { label: { en: 'Visit site', es: 'Ver sitio' }, href: 'https://lobinuxsoft.github.io/yaguarete_os/', kind: 'external' },
     ],
-  },
-  {
-    slug: 'rugby-penalty-kicks',
-    name: 'Rugby Penalty Kicks',
-    year: '2018',
-    featured: false,
-    engine: 'Unity (Mobile VR)',
-    tagline: {
-      en: 'Contracted mobile VR experience for Vear Experience.',
-      es: 'Experiencia VR móvil por contrato para Vear Experience.',
-    },
-    description: {
-      en: 'A mobile VR rugby kicking experience shipped for Vear Experience as a contracted project during the Lobinux era — developing immersive VR for mobile headsets.',
-      es: 'Una experiencia VR móvil de pateo de rugby publicada para Vear Experience como proyecto por contrato durante la etapa de Lobinux — desarrollo de VR inmersiva para visores móviles.',
-    },
-    role: { en: 'Game developer (contract)', es: 'Game developer (contrato)' },
-    tech: ['Unity', 'C#', 'Mobile VR'],
-    links: [],
   },
 ];
 

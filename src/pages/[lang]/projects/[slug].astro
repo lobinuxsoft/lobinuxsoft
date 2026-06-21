@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { type Lang } from '@/i18n/ui';
 import { useTranslations, pick, localizePath } from '@/i18n/utils';
 import { projects, type Project } from '@/data/projects';
+import { getCover } from '@/data/projectCovers';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 export function getStaticPaths() {
@@ -24,6 +26,7 @@ const t = useTranslations(lang);
 const title = `${project.name} — ${pick(project.tagline, lang)}`;
 const backHref = localizePath(lang, '/projects');
 const initials = project.name.slice(0, 2).toUpperCase();
+const cover = getCover(project.cover);
 ---
 
 <BaseLayout lang={lang} title={`${project.name} — Matias Galarza`} description={pick(project.tagline, lang)}>
@@ -32,9 +35,15 @@ const initials = project.name.slice(0, 2).toUpperCase();
       <a class="project__back mono" href={backHref}>← {t('label.viewAll')}</a>
 
       <div class="project__hero" data-reveal>
-        <div class="project__art" data-slug={project.slug} aria-hidden="true">
-          <span class="project__initials mono">{initials}</span>
-        </div>
+        {
+          cover ? (
+            <Image class="project__cover" src={cover} alt={project.name} widths={[600, 1200]} sizes="(min-width: 52rem) 48rem, 100vw" loading="eager" />
+          ) : (
+            <div class="project__art" data-slug={project.slug} aria-hidden="true">
+              <span class="project__initials mono">{initials}</span>
+            </div>
+          )
+        }
       </div>
 
       <header class="project__header" data-reveal>
@@ -97,6 +106,14 @@ const initials = project.name.slice(0, 2).toUpperCase();
     border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid var(--border);
+  }
+  .project__cover {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background:
+      radial-gradient(circle at 30% 25%, var(--amber-glow), transparent 55%),
+      linear-gradient(135deg, var(--ink-800), var(--ink-900));
   }
   .project__art {
     width: 100%;
