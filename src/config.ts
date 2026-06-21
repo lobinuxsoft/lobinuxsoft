@@ -6,8 +6,8 @@
  * and the sitemap.
  */
 export const SITE = {
-  // TODO: replace with the real domain at deploy time.
-  url: 'https://matiasgalarza.dev',
+  // Live deployment. Swap for a custom domain if one is set up later.
+  url: 'https://lobinuxsoft.vercel.app',
   defaultLang: 'en' as const,
   author: 'Matias Ezequiel Galarza Fernandez',
   // Used as the global OG image fallback (lives in /public).
