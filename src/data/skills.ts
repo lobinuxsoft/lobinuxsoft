@@ -38,7 +38,40 @@ export const skillGroups: SkillGroup[] = [
   {
     tag: 'vr/xr',
     category: { en: 'VR / XR', es: 'VR / XR' },
-    skills: ['Meta Quest', 'Immersive interaction design', 'Performance & thermal optimization'],
+    skills: [
+      'OpenXR (vendor-neutral architecture)',
+      'Meta Quest',
+      'Android XR',
+      'PICO',
+      'Meta XR SDK',
+      'Unity XR / AR Foundation',
+      'Immersive interaction design',
+      'Performance & thermal optimization',
+    ],
+  },
+  {
+    tag: 'graphics',
+    category: { en: 'Graphics & GPU', es: 'Gráficos y GPU' },
+    skills: [
+      'GPU-driven rendering',
+      'Nanite-style meshlet pipelines',
+      'Visibility buffer & deferred shading',
+      'Hi-Z occlusion culling',
+      'GPU compute (Vulkan, wgpu)',
+      'Frame-time profiling & optimization',
+    ],
+  },
+  {
+    tag: 'backend',
+    category: { en: 'Backend & Online Services', es: 'Backend y Servicios Online' },
+    skills: [
+      'Node.js / TypeScript services',
+      'Auth, accounts & sessions',
+      'Matchmaking & lobby services',
+      'REST APIs',
+      'Prisma',
+      'Render, Cloudflare',
+    ],
   },
   {
     tag: 'tooling',
@@ -63,6 +96,13 @@ export const skillGroups: SkillGroup[] = [
   {
     tag: 'linux',
     category: { en: 'Linux', es: 'Linux' },
-    skills: ['Maintainer of a custom Arch-based distribution (yaguarete_os)'],
+    skills: [
+      'Maintainer of a custom Fedora Atomic / Bazzite-based distribution (yaguarete_os)',
+      'bootc / OCI image builds',
+      'Shell scripting & build automation',
+      'CI/CD (GitHub Actions, matrix builds)',
+      'Server administration (Ubuntu, Fedora)',
+      'Virtual machines (QEMU/KVM)',
+    ],
   },
 ];
