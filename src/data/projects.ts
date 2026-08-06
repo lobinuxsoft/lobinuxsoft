@@ -39,6 +39,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'kooch',
+    name: 'Kóoch',
+    year: '2025',
+    featured: true,
+    engine: 'Rust + wgpu',
+    tagline: {
+      en: 'A GPU-driven game engine in Rust, with Nanite-style meshlet rendering.',
+      es: 'Un motor de juegos GPU-driven en Rust, con renderizado de meshlets al estilo Nanite.',
+    },
+    description: {
+      en: 'A game engine that pushes the rendering hot loop onto the GPU while gameplay and simulation stay on the CPU. Geometry is drawn through a Nanite-style meshlet pipeline — cluster culling, a visibility buffer and a deferred pass, driven by indirect dispatch with no per-frame readback. Around it: a custom archetype ECS with reflection, hierarchy and scene/prefab serialisation, Rapier physics, Mario Galaxy-style gravity fields, and a standalone editor that drives a running project over a local socket. Named after the creator deity of the Tehuelche (Aonikenk) people of Patagonia.',
+      es: 'Un motor de juegos que empuja el hot loop de renderizado a la GPU mientras el gameplay y la simulación se quedan en la CPU. La geometría se dibuja con un pipeline de meshlets al estilo Nanite — cluster culling, visibility buffer y un pase deferred, manejados por indirect dispatch y sin readback por frame. Alrededor: un ECS por arquetipos propio con reflexión, jerarquía y serialización de escenas/prefabs, física con Rapier, campos de gravedad al estilo Mario Galaxy, y un editor standalone que controla un proyecto en ejecución por un socket local. Lleva el nombre del dios creador del pueblo tehuelche (aonikenk) de la Patagonia.',
+    },
+    role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
+    tech: ['Rust', 'wgpu', 'GPU-driven rendering', 'Meshlets', 'ECS', 'Rapier', 'egui'],
+    cover: 'kooch.png',
+    links: [
+      { label: { en: 'Read the docs', es: 'Ver la documentación' }, href: 'https://lobinuxsoft.github.io/kooch', kind: 'external' },
+      { label: { en: 'View code', es: 'Ver código' }, href: 'https://github.com/lobinuxsoft/kooch', kind: 'code' },
+    ],
+  },
+  {
     slug: 'capydeploy',
     name: 'CapyDeploy',
     year: '2024',
