@@ -12,12 +12,20 @@ import type { Lang, LocalizedString } from '@/i18n/utils';
  * treatment. Cover files live in `src/assets/projects/` (resolved by
  * `data/projectCovers.ts`); set the filename here to swap them in.
  */
+/**
+ * Where a project actually stands, judged by its releases — not by how
+ * finished it feels. `production` means there is a stable tagged release in
+ * use; `beta` means it ships but is still pre-1.0; `in-development` means
+ * active work with no release yet.
+ */
+export type ProjectStatus = 'production' | 'beta' | 'in-development';
+
 export interface Project {
   slug: string;
   name: string;
   year: string;
   featured: boolean;
-  liveInProduction?: boolean;
+  status: ProjectStatus;
   /** Short one-liner shown on the card. */
   tagline: LocalizedString;
   /** Longer description for the detail view. */
@@ -43,6 +51,7 @@ export const projects: Project[] = [
     name: 'Kóoch',
     year: '2025 – 2026',
     featured: true,
+    status: 'in-development',
     engine: 'Rust + wgpu',
     tagline: {
       en: 'A GPU-driven game engine in Rust, with Nanite-style meshlet rendering.',
@@ -65,7 +74,7 @@ export const projects: Project[] = [
     name: 'CapyDeploy',
     year: '2026',
     featured: true,
-    liveInProduction: true,
+    status: 'production',
     engine: 'Rust + Tauri 2',
     tagline: {
       en: 'Cross-platform game deployment for handheld devices.',
@@ -87,6 +96,7 @@ export const projects: Project[] = [
     name: 'OhMyDialogSystem',
     year: '2025 – 2026',
     featured: true,
+    status: 'in-development',
     engine: 'Godot 4 + C++ GDExtension',
     tagline: {
       en: 'Engine tooling: a local LLM inference runtime embedded in Godot 4.',
@@ -108,6 +118,7 @@ export const projects: Project[] = [
     name: 'Yryvu',
     year: '2026',
     featured: true,
+    status: 'beta',
     engine: 'Rust + Tauri + SolidJS',
     tagline: {
       en: 'A Git client that flags common mistakes before they ship.',
@@ -130,6 +141,7 @@ export const projects: Project[] = [
     name: 'yaguarete_os',
     year: '2026',
     featured: true,
+    status: 'production',
     engine: 'Fedora Atomic',
     tagline: {
       en: 'An immutable KDE distribution built on Bazzite, for development and gaming.',

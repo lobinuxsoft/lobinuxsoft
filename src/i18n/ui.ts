@@ -56,7 +56,9 @@ export const ui = {
     'label.certifications': 'Certifications',
     'label.languages': 'Languages',
     'label.email': 'Email',
-    'label.liveInProduction': 'Live in production',
+    'label.status.production': 'In production',
+    'label.status.beta': 'Beta',
+    'label.status.in-development': 'In development',
 
     // footer
     'footer.built': 'Built with Astro',
@@ -109,7 +111,9 @@ export const ui = {
     'label.certifications': 'Certificaciones',
     'label.languages': 'Idiomas',
     'label.email': 'Email',
-    'label.liveInProduction': 'En producción',
+    'label.status.production': 'En producción',
+    'label.status.beta': 'Beta',
+    'label.status.in-development': 'En desarrollo',
 
     // footer
     'footer.built': 'Hecho con Astro',

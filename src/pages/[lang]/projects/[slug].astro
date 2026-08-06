@@ -50,7 +50,7 @@ const cover = getCover(project.cover);
         <div class="project__meta mono">
           <span class="project__engine">{project.engine}</span>
           <span>{project.year}</span>
-          {project.liveInProduction && <span class="project__live">{t('label.liveInProduction')}</span>}
+          <span class={`project__live project__live--${project.status}`}>{t(`label.status.${project.status}`)}</span>
         </div>
         <h1 class="project__title">{project.name}</h1>
         <p class="lead">{pick(project.tagline, lang)}</p>
@@ -152,6 +152,17 @@ const cover = getCover(project.cover);
     font-size: 0.65rem;
     letter-spacing: 0.08em;
     align-self: center;
+  }
+
+  /* Modifiers must follow the base rule: same specificity, last one wins. */
+  .project__live--beta {
+    color: var(--amber-glow);
+    border-color: var(--amber-glow);
+  }
+
+  .project__live--in-development {
+    color: var(--text-muted);
+    border-color: var(--border-strong);
   }
   .project__title {
     font-size: var(--step-4);

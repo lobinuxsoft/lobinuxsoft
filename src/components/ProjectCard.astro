@@ -14,6 +14,7 @@ const t = useTranslations(lang);
 const href = localizePath(lang, `/projects/${project.slug}`);
 const initials = project.name.slice(0, 2).toUpperCase();
 const cover = getCover(project.cover);
+const statusLabel = t(`label.status.${project.status}`);
 ---
 
 <article class="card" data-reveal>
@@ -28,7 +29,7 @@ const cover = getCover(project.cover);
         </div>
       )
     }
-    {project.liveInProduction && <span class="card__badge mono">{t('label.liveInProduction')}</span>}
+    <span class={`card__badge card__badge--${project.status} mono`}>{statusLabel}</span>
   </a>
 
   <div class="card__body">
@@ -128,6 +129,17 @@ const cover = getCover(project.cover);
     border: 1px solid var(--accent);
     color: var(--accent);
     backdrop-filter: blur(6px);
+  }
+
+  /* Status colours: shipped work earns the accent, work in flight does not. */
+  .card__badge--beta {
+    border-color: var(--amber-glow);
+    color: var(--amber-glow);
+  }
+
+  .card__badge--in-development {
+    border-color: var(--border-strong);
+    color: var(--text-muted);
   }
   .card__body {
     display: flex;
