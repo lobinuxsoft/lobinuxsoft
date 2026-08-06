@@ -10,8 +10,8 @@ export const profile = {
   name: 'Matias Galarza Fernandez',
   shortName: 'Matias Galarza',
   summary: {
-    en: 'Senior game developer and lead programmer with 9+ years building games, real-time multiplayer systems, and cross-platform developer tools. Currently shaping next-generation VR multiplayer experiences at 3dar, an Argentine studio with AAA cinematic and HBO immersive credits. A strong advocate of clean architecture, SOLID principles, measurable performance, and production-grade code — comfortable leading prototypes from concept to shippable product.',
-    es: 'Desarrollador senior de videojuegos y lead programmer con más de 9 años creando juegos, sistemas multiplayer en tiempo real y herramientas de desarrollo cross-platform. Actualmente doy forma a experiencias VR multiplayer de nueva generación en 3dar, un estudio argentino con créditos en cine AAA e inmersivos para HBO. Defensor de la arquitectura limpia, los principios SOLID, el rendimiento medible y el código de calidad de producción — con experiencia llevando prototipos del concepto a producto terminado.',
+    en: 'Senior game developer and lead programmer with 9+ years building games, real-time multiplayer systems, rendering technology and cross-platform developer tools. Currently at 3dar, an Argentine studio with AAA cinematic and HBO immersive credits, working on Eggscape — an award-winning multiplayer VR title — where I co-own its multi-platform ports and its online backend. On my own time I build Kóoch, a GPU-driven game engine in Rust with a Nanite-style meshlet renderer. A strong advocate of clean architecture, SOLID principles, measurable performance, and production-grade code — comfortable leading prototypes from concept to shippable product.',
+    es: 'Desarrollador senior de videojuegos y lead programmer con más de 9 años creando juegos, sistemas multiplayer en tiempo real, tecnología de renderizado y herramientas de desarrollo cross-platform. Actualmente en 3dar, un estudio argentino con créditos en cine AAA e inmersivos para HBO, trabajando en Eggscape — un título VR multiplayer premiado — donde co-lidero sus ports multiplataforma y su backend online. Por mi cuenta construyo Kóoch, un motor de juegos GPU-driven en Rust con un renderer de meshlets al estilo Nanite. Defensor de la arquitectura limpia, los principios SOLID, el rendimiento medible y el código de calidad de producción — con experiencia llevando prototipos del concepto a producto terminado.',
   } satisfies LocalizedString,
 } as const;
 
@@ -33,16 +33,24 @@ export const experience: ExperienceEntry[] = [
     end: 'present',
     highlights: [
       {
-        en: 'Develop next-generation VR multiplayer experiences for a studio with AAA cinematic and HBO immersive credits.',
-        es: 'Desarrollo experiencias VR multiplayer de nueva generación para un estudio con créditos en cine AAA e inmersivos para HBO.',
+        en: 'Work on Eggscape, an award-winning Unity 6 multiplayer VR title, live in Early Access on Meta Quest since December 2024, for a studio with AAA cinematic and HBO immersive credits.',
+        es: 'Trabajo en Eggscape, un título VR multiplayer premiado hecho en Unity 6, en Early Access en Meta Quest desde diciembre de 2024, para un estudio con créditos en cine AAA e inmersivos para HBO.',
       },
       {
-        en: 'Build deterministic real-time multiplayer with Photon Quantum (ECS), with custom networking over WebSocket, TCP and mDNS.',
-        es: 'Construyo multiplayer determinista en tiempo real con Photon Quantum (ECS), con networking propio sobre WebSocket, TCP y mDNS.',
+        en: 'Co-own the porting of the title across Meta Quest, Android XR, Android mobile and Steam, on a pure-OpenXR architecture that keeps vendor-specific APIs behind a strategy layer, plus a package-profile build system that swaps packages, native plugins and manifests per target.',
+        es: 'Co-lidero el port del título a Meta Quest, Android XR, Android mobile y Steam, sobre una arquitectura OpenXR pura que mantiene las APIs propietarias detrás de una capa de estrategias, más un sistema de perfiles de paquetes que intercambia paquetes, plugins nativos y manifests según el target.',
       },
       {
-        en: 'Optimize VR performance and thermal budgets for Meta Quest headsets to sustain target frame rates.',
-        es: 'Optimizo el rendimiento VR y los presupuestos térmicos de los visores Meta Quest para sostener los frame rates objetivo.',
+        en: 'Build deterministic real-time multiplayer with Photon Quantum for Unity (ECS with rollback), with custom networking over WebSocket, TCP and mDNS.',
+        es: 'Construyo multiplayer determinista en tiempo real con Photon Quantum para Unity (ECS con rollback), con networking propio sobre WebSocket, TCP y mDNS.',
+      },
+      {
+        en: "Work on the title's Node.js / TypeScript backend: authentication, accounts and sessions, plus matchmaking, lobby and match-state services.",
+        es: 'Trabajo en el backend del título en Node.js / TypeScript: autenticación, cuentas y sesiones, además de los servicios de matchmaking, lobbies y estado de partida.',
+      },
+      {
+        en: 'Optimize performance and thermal budgets across standalone headsets and mobile hardware to sustain target frame rates.',
+        es: 'Optimizo el rendimiento y los presupuestos térmicos en visores standalone y hardware móvil para sostener los frame rates objetivo.',
       },
     ],
   },
