@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     slug: 'kooch',
     name: 'Kóoch',
-    year: '2025',
+    year: '2025 – 2026',
     featured: true,
     engine: 'Rust + wgpu',
     tagline: {
@@ -63,7 +63,7 @@ export const projects: Project[] = [
   {
     slug: 'capydeploy',
     name: 'CapyDeploy',
-    year: '2024',
+    year: '2026',
     featured: true,
     liveInProduction: true,
     engine: 'Rust + Tauri 2',
@@ -85,16 +85,16 @@ export const projects: Project[] = [
   {
     slug: 'ohmydialogsystem',
     name: 'OhMyDialogSystem',
-    year: '2024',
+    year: '2025 – 2026',
     featured: true,
     engine: 'Godot 4 + C++ GDExtension',
     tagline: {
-      en: 'AI-powered NPC dialogue for Godot 4 — not a chatbot wrapper.',
-      es: 'Diálogos de NPC con IA para Godot 4 — no un wrapper de chatbot.',
+      en: 'Engine tooling: a local LLM inference runtime embedded in Godot 4.',
+      es: 'Tooling de engine: un runtime de inferencia LLM local embebido en Godot 4.',
     },
     description: {
-      en: 'Local LLM inference brought into Godot 4 via llama.cpp through a C++ GDExtension, exposing three distinct dialogue modes for NPCs. Designed as a real gameplay dialogue tool that runs on-device, not a thin chatbot wrapper.',
-      es: 'Inferencia de LLM local llevada a Godot 4 mediante llama.cpp a través de una GDExtension en C++, exponiendo tres modos de diálogo distintos para NPCs. Diseñado como una herramienta real de diálogo de gameplay que corre on-device, no un simple wrapper de chatbot.',
+      en: 'Developer tooling for Godot 4, not a game: llama.cpp is embedded into the engine through a C++ GDExtension, integrated with its object lifecycle and scripting layer, and exposed to game teams as three distinct dialogue modes. All inference runs on-device — no API calls, no chatbot wrapper.',
+      es: 'Herramienta de desarrollo para Godot 4, no un juego: llama.cpp se embebe en el motor mediante una GDExtension en C++, integrado con su ciclo de vida de objetos y su capa de scripting, y expuesto a los equipos de juego como tres modos de diálogo distintos. Toda la inferencia corre on-device — sin llamadas a APIs, sin wrappers de chatbot.',
     },
     role: { en: 'Architecture & full implementation', es: 'Arquitectura e implementación completa' },
     tech: ['Godot 4', 'C++', 'GDExtension', 'llama.cpp', 'Local LLM'],
@@ -106,7 +106,7 @@ export const projects: Project[] = [
   {
     slug: 'yryvu',
     name: 'Yryvu',
-    year: '2024',
+    year: '2026',
     featured: true,
     engine: 'Rust + Tauri + SolidJS',
     tagline: {
@@ -128,7 +128,7 @@ export const projects: Project[] = [
   {
     slug: 'yaguarete-os',
     name: 'yaguarete_os',
-    year: '2023',
+    year: '2026',
     featured: true,
     engine: 'Fedora Atomic',
     tagline: {
